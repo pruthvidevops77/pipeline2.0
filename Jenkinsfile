@@ -32,8 +32,9 @@ pipeline{
 						sh 'sleep 5'	
 						echo "TESTING PHASE3"
 					}	
-
 				}
+		
+				
 		stage('DEPLOY') {
 			agent any
 			steps {
