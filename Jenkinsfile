@@ -1,51 +1,28 @@
 pipeline{
 	agent any
+	parameters {
+		string(name: 'NAME_ENV', description: 'target environment to deploy')
+	}
+	environment {
+		DEPLOY_TO = '${TARGET_ENV}'
+	}
 	stages {
-		stage('BUILD') {
-			steps {
-				sh '''
-					pwd
-					sleep 5
-					echo This is the fist stage: BUILD
-				'''
-			}	
+		stage{'DEPLOY_TEST'} {
+		      when {
+			      environment name: 'DEPLOY_TO', value: 'test'
+		      }
+		      steps {
+			      echo 'DEPLOY_TO TEST ENVIRONMENT ....'
+			      sh 'sleep 5'
+		      }
 		}
-		
-		stage('TEST') {
-			parallel { 
-				stage('TEST1') {
-					steps {
-						sh 'sleep 5'	
-						echo "TESTING PHASE1"
-					}	
-					
-				}
-				stage('TEST2') {
-					steps {
-						sh 'sleep 5'	
-						echo "TESTING PHASE2"
-					}	
-					
-				}
-				stage('TEST3') {
-					steps {
-						sh 'sleep 5'	
-						echo "TESTING PHASE3"
-					}	
-				}
-		
-				
-		stage('DEPLOY') {
-			agent any
-			steps {
-				sh '''
-					pwd
-					sleep 5
-					echo This is the fist stage: DEPLOY
-				'''
-					}	
-				}
-			}
+		stage{'DEPLOY_PROD'} {
+		      when {
+			      environment name: 'DEPLOY_TO', value: 'prod'
+		      }
+		      steps {
+			      echo 'DEPLOY_TO PRODUCTION ....'
+			      sh 'sleep 5'
+		      }
 		}
 	}
-}
