@@ -1,10 +1,10 @@
-pipeline{
+pipeline {
 	agent any
 	parameters {
-		string(name: 'TARGET_ENV', description: 'target environment to deploy')
+		string{name: 'TARGET_ENV', description: 'target environment to deploy'}
 	}
 	environment {
-		DEPLOY_TO = '${TARGET_ENV}'
+		DEPLOY_TO = "${TARGET_ENV}"
 	}
 	stages {
 		stage{'DEPLOY_TEST'} {
@@ -26,3 +26,4 @@ pipeline{
 		      }
 		}
 	}
+}
