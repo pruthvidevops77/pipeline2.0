@@ -34,8 +34,6 @@ pipeline{
 					}	
 
 				}
-		
-
 		stage('DEPLOY') {
 			agent any
 			steps {
