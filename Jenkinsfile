@@ -43,7 +43,8 @@
 					sleep 5
 					echo This is the fist stage: DEPLOY
 				'''
-			}	
+				}	
+			}
 		}
 	}
 }
