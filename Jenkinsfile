@@ -33,12 +33,7 @@
 					}	
 
 				}
-				stage('TEST4') {
-					steps {
-						sh 'sleep 5'
-						echo "TESTING PHASE4"
-
-		}
+		
 
 		stage('DEPLOY') {
 			agent any
@@ -48,7 +43,6 @@
 					sleep 5
 					echo This is the fist stage: DEPLOY
 				'''
-			}	
-		}
+		}	
 	}
 }
