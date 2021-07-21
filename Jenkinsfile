@@ -7,7 +7,7 @@ pipeline {
 		DEPLOY_TO = "${TARGET_ENV}"
 	}
 	stages {
-		stage{'DEPLOY_TEST'} {
+		stage('DEPLOY_TEST') {
 		      when {
 			      environment name: 'DEPLOY_TO', value: 'test'
 		      }
@@ -16,7 +16,7 @@ pipeline {
 			      sh 'sleep 5'
 		      }
 		}
-		stage{'DEPLOY_PROD'} {
+		stage('DEPLOY_PROD') {
 		      when {
 			      environment name: 'DEPLOY_TO', value: 'prod'
 		      }
